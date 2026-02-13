@@ -12,7 +12,7 @@ import styles from './Map.module.css';
 import { useEffect, useState } from 'react';
 import { useCity } from '../context/CityProvider';
 import { useGeolocation } from '../hooks/useGeolocation';
-// import { useUrlPosition } from '../hooks/useUrlPosition';
+import { useUrlPosition } from '../hooks/useUrlPosition';
 import Button from './Button';
 
 function Map() {
@@ -23,14 +23,14 @@ function Map() {
     position: geolocationPosition,
     getPosition,
   } = useGeolocation();
-  // const [mapLat, mapLng] = useUrlPosition();
+  const [mapLat, mapLng] = useUrlPosition();
 
-  // useEffect(
-  //   function () {
-  //     if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
-  //   },
-  //   [mapLat, mapLng],
-  // );
+  useEffect(
+    function () {
+      if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
+    },
+    [mapLat, mapLng],
+  );
 
   useEffect(
     function () {
